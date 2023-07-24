@@ -1,3 +1,3 @@
 .PHONY: cmd
 cmd:
-	go build -o header-parser .
+	@go build -o header-parser .
