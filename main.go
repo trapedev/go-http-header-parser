@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"net/http"
+	"os"
 )
 
 type COLOR string
@@ -26,7 +27,16 @@ func colorPrinter(color COLOR, format string, values ...any) {
 
 func main() {
 	url := flag.String("u", "", "url to parse")
+	flag.Usage = func() {
+		colorPrinter(YELLOW, "Usage of %s:\n", os.Args[0])
+		colorPrinter(GREEN, "  -u string\n")
+		colorPrinter(WHITE, "        url to parse\n")
+	}
 	flag.Parse()
+	if len(*url) == 0 || len(flag.Args()) > 0 {
+		flag.Usage()
+		os.Exit(1)
+	}
 	colorPrinter(BLUE, "Checking... URL : %s\n", *url)
 	fmt.Println()
 	resp, err := http.Get(*url)
