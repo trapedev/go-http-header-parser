@@ -75,7 +75,6 @@ func main() {
 		colorPrinter(YELLOW, "Usage of %s:\n", os.Args[0])
 		colorPrinter(GREEN, "  -u string\n")
 		colorPrinter(WHITE, "        url to parse\n")
-		colorPrinter(YELLOW, "Usage of %s:\n", os.Args[0])
 		colorPrinter(GREEN, "  -l string\n")
 		colorPrinter(WHITE, "        list of url\n")
 	}
